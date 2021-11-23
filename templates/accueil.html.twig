@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Pronote v9000{% endblock %}</title>
+    {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+</head>
+<body>
+    {% block body %}
+        Accueil
+        <input type="button" value="Intervenant" onclick="location.href='/connexion_intervenant'"/>
+        <input type="button" value="Secretaire" onclick="location.href='/connexion_secretaire'"/>
+    {% endblock %}
+</body>
+</html>
