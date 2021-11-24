@@ -16,7 +16,6 @@ class IntervenantFormType extends AbstractType
             ->add('nom')
             ->add('prenom')
             ->add('specialite')
-            ->add('setCalendars')
             ->add("Enregistrer", SubmitType::class);
         ;
     }
