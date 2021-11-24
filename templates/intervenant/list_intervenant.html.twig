@@ -1,5 +1,7 @@
 {% for Intervenant in Intervenants %}
 <tr>
-    <td>Nom : {{ Intervenant.Nom }}</td>
-</tr>
+    <td>Nom : {{ Intervenant.nom }}</td>
+    <td>Prénom : {{ Intervenant.prenom }}</td>
+    <td>Spécialité : {{ Intervenant.specialite }}</td>
+</tr><br>
 {% endfor %}
