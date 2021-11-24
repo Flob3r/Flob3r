@@ -15,6 +15,7 @@ class IntervenantController extends AbstractController
      * @Route("/connexion_intervenant")
      */
 
+    #Connexion à un compte intervenant
     function ConnexionIntervenant(){
         return new Response("Future page de connexion de l'intervenant");
     }
@@ -23,6 +24,7 @@ class IntervenantController extends AbstractController
      * @Route("/inscription_intervenant")
      */
 
+    #Create a new intervenant
     function InscriptionIntervenant(Request $request){
         $task = new Intervenant();
 
@@ -47,6 +49,7 @@ class IntervenantController extends AbstractController
      * @Route("/list_intervenant")
      */
 
+    #Return list of intervenant
     function listIntervenant(){
         $intervenants = $this->getDoctrine()->getRepository(Intervenant::class)->findAll();
         return $this->render('intervenant/list_intervenant.html.twig', ['Intervenants'=>$intervenants,]);
