@@ -1,0 +1,7 @@
+{% for Matiere in Matieres %}
+    <tr>
+        <td>Nom : {{ Matiere.intitule }}</td>
+        <td>Prénom : {{ Matiere.duree }}</td>
+        <td>Spécialité : {{ Matiere.fkIntervenant.nom }}</td>
+    </tr><br>
+{% endfor %}
