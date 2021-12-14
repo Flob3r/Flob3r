@@ -50,7 +50,8 @@
                         {
                             id: '{{ Calendrier.id }}',
                             title: '{{ Calendrier.nomCours }}',
-                            start: '{{ Calendrier.dateStart|date("Y-m-d") }}'
+                            start: '{{ Calendrier.dateStart|date("Y-m-d") }}',
+                            end: '{{ Calendrier.dateEnd|date('Y-m-d') }}',
                         },
                         {% endfor %}
                     ]
