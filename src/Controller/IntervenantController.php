@@ -32,15 +32,15 @@ class IntervenantController extends AbstractController
 
 	    $form->handleRequest($request);
 
-	if($form->isSubmitted() && $form->isValid()){
-		$task = $form->getData();
+        if($form->isSubmitted() && $form->isValid()){
+            $task = $form->getData();
 
-		$entityManager = $this->getDoctrine()->getManager();
-		$entityManager->persist($task);
-		$entityManager->flush();
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($task);
+            $entityManager->flush();
 
-		return $this->redirectToRoute('newIntervenant_success');
-	}
+            return $this->redirectToRoute('newIntervenant_success');
+        }
 
         return $this->render('intervenant/intervenant_create.html.twig', ['intervenantForm'=>$form->createView(), ]);
     }
@@ -54,5 +54,22 @@ class IntervenantController extends AbstractController
         $intervenants = $this->getDoctrine()->getRepository(Intervenant::class)->findAll();
         return $this->render('intervenant/list_intervenant.html.twig', ['Intervenants'=>$intervenants,]);
     }
+
+
+    /**
+     * @Route ("/remove_intervenants")
+     */
+
+    function deleteIntervenants(){
+        $repository = $this->getDoctrine()->getRepository(Intervenant::class);
+        $intervenant = $repository->findAll();
+        $entityManager = $this->getDoctrine()->getManager();
+        foreach ($intervenant as $intervenants) {
+            $entityManager->remove($intervenants);
+        }
+        $entityManager->flush();
+        return new Response("Intervenants reset");
+    }
+
 
 }

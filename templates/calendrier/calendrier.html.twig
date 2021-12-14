@@ -38,13 +38,18 @@
                         start: 'prev,next today',
                         center: 'title',
                         end: 'dayGridMonth,timeGridWeek'
-                    }
+                    },
+                    events: [
+                        {% for Calendrier in Calendriers %}
+                        { // this object will be "parsed" into an Event Object
+                            id: {{ Calendrier.id }},
+                            title: {{ Calendrier.nomCours }} , // a property!
+                            start: "2021-12-14"
+                            //end: // a property! ** see important note below about 'end' **
+                        },
+                        {% endfor %}
+                    ]
                 })
-
-                calendar.addEvent([
-
-                ])
-
                 calendar.render()
             }
         </script>

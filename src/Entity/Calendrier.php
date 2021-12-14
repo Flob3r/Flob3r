@@ -60,6 +60,11 @@ class Calendrier
         $this->fk_matiere = new ArrayCollection();
     }
 
+    public function __toString(): string
+    {
+        return $this->NomCours;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
