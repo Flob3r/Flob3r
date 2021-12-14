@@ -82,6 +82,7 @@ class SecretaireController extends AbstractController
 
     function voirCalendrier(){
         $date = $this->getDoctrine()->getRepository(Calendrier::class)->findAll();
+
         return $this->render('calendrier/calendrier.html.twig', ['Calendriers'=>$date,]);
     }
 

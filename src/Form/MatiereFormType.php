@@ -16,7 +16,6 @@ class MatiereFormType extends AbstractType
             ->add('intitule')
             ->add('duree')
             ->add('fk_intervenant')
-            ->add('setMatiere')
             ->add("Enregistrer", SubmitType::class);
         ;
     }

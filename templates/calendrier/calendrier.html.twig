@@ -21,7 +21,13 @@
 
         {% block body %}
         <div id="calendrier">
-
+            events: [
+            {% for Calendrier in Calendriers %}
+                Titre : "{{ Calendrier.nomCours }}"
+                DateStart : {{ Calendrier.dateStart|date('Y-m-d') }}
+                DateEnd : {{ Calendrier.dateEnd|date('Y-m-d') }}
+            {% endfor %}
+            ]
         </div>
         {% endblock %}
 
@@ -41,11 +47,10 @@
                     },
                     events: [
                         {% for Calendrier in Calendriers %}
-                        { // this object will be "parsed" into an Event Object
-                            id: {{ Calendrier.id }},
-                            title: {{ Calendrier.nomCours }} , // a property!
-                            start: "2021-12-14"
-                            //end: // a property! ** see important note below about 'end' **
+                        {
+                            id: '{{ Calendrier.id }}',
+                            title: '{{ Calendrier.nomCours }}',
+                            start: '{{ Calendrier.dateStart|date("Y-m-d") }}'
                         },
                         {% endfor %}
                     ]
