@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calendrier</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css" integrity="sha256-16PDMvytZTH9heHu9KBPjzrFTaoner60bnABykjNiM0=" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js" integrity="sha256-XOMgUu4lWKSn8CFoJoBoGd9Q/OET+xrfGYSo+AKpFhE=" crossorigin="anonymous"></script>
+
+        {% block stylesheets %}
+        <style>
+            #calendrier{
+                width: 80%;
+                margin: auto;
+            }
+        </style>
+        {% endblock %}
+
+    </head>
+
+    <body>
+
+        {% block body %}
+        <div id="calendrier">
+
+        </div>
+        {% endblock %}
+
+        {% block javascripts %}
+        <script>
+            window.onload = () => {
+                let calendarElt = document.querySelector("#calendrier")
+
+                let calendar = new FullCalendar.Calendar(calendarElt, {initialView: "dayGridMonth"})
+
+                calendar.render()
+            }
+        </script>
+        {% endblock %}
+
+    </body>
+</html>
