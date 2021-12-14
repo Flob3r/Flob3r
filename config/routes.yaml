@@ -18,3 +18,12 @@ newDateCalendar_success:
     template: '/static/calendar_date_success.html.twig'
     maxAge: 86400
     sharedAge: 86400
+
+
+newMatiere_success:
+  path:         /new_matiere_success
+  controller:	Symfony\Bundle\FrameworkBundle\Controller\TemplateController
+  defaults:
+    template: '/static/matiere_success.html.twig'
+    maxAge: 86400
+    sharedAge: 86400

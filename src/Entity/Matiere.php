@@ -44,6 +44,11 @@ class Matiere
         $this->setMatiere = new ArrayCollection();
     }
 
+    public function __toString(): string
+    {
+        return $this->intitule;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
