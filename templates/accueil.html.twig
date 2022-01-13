@@ -9,8 +9,16 @@
 <body>
     {% block body %}
         <p>Accueil</p>
+
+        {% if app.user %}
+            <div class="mb-3">
+                Connecté en tant que : {{ app.user.email }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
+            </div>
+        {% endif %}
+
         <input type="button" value="Intervenant" onclick="location.href='/connexion_intervenant'"/>
         <input type="button" value="Secretaire" onclick="location.href='/connexion_secretaire'"/>
+
     {% endblock %}
 </body>
 </html>
