@@ -17,7 +17,7 @@ class IntervenantController extends AbstractController
 
     #Connexion à un compte intervenant
     function ConnexionIntervenant(){
-        return new Response("Future page de connexion de l'intervenant");
+        return $this->render('security/login.html.twig');
     }
 
     /**
