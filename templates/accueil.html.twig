@@ -15,10 +15,26 @@
             <div class="mb-3">
                 Connecté en tant que : {{ app.user.email }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
             </div>
+            <p>Menu des intervenants</p>
+            <input type="button" value="Liste des intervenants" onclick="location.href='list_intervenant'"/>
+            <input type="button" value="Ajouter un intervenant" onclick="location.href='inscription_intervenant'"/>
+            <input type="button" value="Supprimer les intervenants" onclick="location.href='remove_intervenants'"/>
+            <br><br><br>
+            <p>Menu des matieres</p>
+            <input type="button" value="Liste des matières" onclick="location.href='/matieres'"/>
+            <input type="button" value="Ajouter une matière" onclick="location.href='/matieres/ajouter'"/>
+            <input type="button" value="Supprimer les matières" onclick="location.href='/matieres/supprimer'"/>
+            <br><br><br>
+            <p>Calendrier</p>
+            <input type="button" value="Accèder au calendrier" onclick="location.href='/calendrier'"/>
+            <input type="button" value="Ajouter un cours" onclick="location.href='/calendrier/ajouter'"/>
+            <input type="button" value="Supprimer les cours" onclick="location.href='/calendrier/supprimer'"/>
         {% endif %}
 
-        <input type="button" value="Intervenant" onclick="location.href='/connexion_intervenant'"/>
-        <input type="button" value="Secretaire" onclick="location.href='/connexion_secretaire'"/>
+        {% if not app.user %}
+            <input type="button" value="Intervenant" onclick="location.href='/login'"/>
+            <input type="button" value="Secretaire" onclick="location.href='/login'"/>
+        {% endif %}
 
     {% endblock %}
 </body>
