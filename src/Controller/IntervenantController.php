@@ -73,7 +73,7 @@ class IntervenantController extends AbstractController
             $entityManager->remove($intervenants);
         }
         $entityManager->flush();
-        return new Response("Intervenants reset");
+        return $this->render('intervenant/intervenant_delete.html.twig');
     }
 
 

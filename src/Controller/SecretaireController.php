@@ -71,7 +71,7 @@ class SecretaireController extends AbstractController
             $entityManager->remove($matieres);
         }
         $entityManager->flush();
-        return new Response("Matieres reset");
+        return $this->render('secretaire/matiere_delete.html.twig');
     }
 
 
@@ -125,7 +125,7 @@ class SecretaireController extends AbstractController
             $entityManager->remove($dates);
         }
         $entityManager->flush();
-        return new Response("Calendrier reset");
+        return $this->render('secretaire/calendrier_delete_date.html.twig');
     }
 
 }
