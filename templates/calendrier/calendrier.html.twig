@@ -26,8 +26,8 @@
             events: [
             {% for Calendrier in Calendriers %}
                 Titre : "{{ Calendrier.nomCours }}"
-                DateStart : {{ Calendrier.dateStart|date('Y-m-d') }}
-                DateEnd : {{ Calendrier.dateEnd|date('Y-m-d') }}
+                DateStart : {{ Calendrier.dateStart|date('Y-m-d H:i:s') }}
+                DateEnd : {{ Calendrier.dateEnd|date('Y-m-d H:i:s') }}
             {% endfor %}
             ]
         </div>
@@ -52,8 +52,8 @@
                         {
                             id: '{{ Calendrier.id }}',
                             title: '{{ Calendrier.nomCours }}',
-                            start: '{{ Calendrier.dateStart|date("Y-m-d") }}',
-                            end: '{{ Calendrier.dateEnd|date('Y-m-d') }}',
+                            start: '{{ Calendrier.dateStart|date("Y-m-d H:i:s") }}',
+                            end: '{{ Calendrier.dateEnd|date('Y-m-d H:i:s') }}',
                         },
                         {% endfor %}
                     ]
