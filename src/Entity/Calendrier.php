@@ -25,24 +25,14 @@ class Calendrier
     private $NomCours;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
     private $DateStart;
 
     /**
-     * @ORM\Column(type="time")
-     */
-    private $TimeStart;
-
-    /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
     private $DateEnd;
-
-    /**
-     * @ORM\Column(type="time")
-     */
-    private $TimeEnd;
 
     /**
      * @ORM\ManyToMany(targetEntity=Intervenant::class, inversedBy="setCalendars")
@@ -53,6 +43,7 @@ class Calendrier
      * @ORM\ManyToMany(targetEntity=Matiere::class, inversedBy="setMatiere")
      */
     private $fk_matiere;
+
 
     public function __construct()
     {
@@ -78,54 +69,6 @@ class Calendrier
     public function setNomCours(string $NomCours): self
     {
         $this->NomCours = $NomCours;
-
-        return $this;
-    }
-
-    public function getDateStart(): ?\DateTimeInterface
-    {
-        return $this->DateStart;
-    }
-
-    public function setDateStart(\DateTimeInterface $DateStart): self
-    {
-        $this->DateStart = $DateStart;
-
-        return $this;
-    }
-
-    public function getTimeStart(): ?\DateTimeInterface
-    {
-        return $this->TimeStart;
-    }
-
-    public function setTimeStart(\DateTimeInterface $TimeStart): self
-    {
-        $this->TimeStart = $TimeStart;
-
-        return $this;
-    }
-
-    public function getDateEnd(): ?\DateTimeInterface
-    {
-        return $this->DateEnd;
-    }
-
-    public function setDateEnd(\DateTimeInterface $DateEnd): self
-    {
-        $this->DateEnd = $DateEnd;
-
-        return $this;
-    }
-
-    public function getTimeEnd(): ?\DateTimeInterface
-    {
-        return $this->TimeEnd;
-    }
-
-    public function setTimeEnd(\DateTimeInterface $TimeEnd): self
-    {
-        $this->TimeEnd = $TimeEnd;
 
         return $this;
     }
@@ -174,6 +117,30 @@ class Calendrier
     public function removeFkMatiere(Matiere $fkMatiere): self
     {
         $this->fk_matiere->removeElement($fkMatiere);
+
+        return $this;
+    }
+
+    public function getDateStart(): ?\DateTimeInterface
+    {
+        return $this->DateStart;
+    }
+
+    public function setDateStart(\DateTimeInterface $DateStart): self
+    {
+        $this->DateStart = $DateStart;
+
+        return $this;
+    }
+
+    public function getDateEnd(): ?\DateTimeInterface
+    {
+        return $this->DateEnd;
+    }
+
+    public function setDateEnd(\DateTimeInterface $DateEnd): self
+    {
+        $this->DateEnd = $DateEnd;
 
         return $this;
     }
