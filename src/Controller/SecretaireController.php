@@ -105,8 +105,6 @@ class SecretaireController extends AbstractController
             $entityManager->persist($task);
             $entityManager->flush();
 
-
-
             return $this->redirectToRoute('newDateCalendar_success');
         }
 
