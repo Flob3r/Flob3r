@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20220228164833 extends AbstractMigration
+final class Version20220228172216 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,7 +20,7 @@ final class Version20220228164833 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE calendrier (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, nom_cours VARCHAR(255) NOT NULL, date_start DATE NOT NULL, time_start TIME NOT NULL, date_end DATE NOT NULL, time_end TIME NOT NULL)');
+        $this->addSql('CREATE TABLE calendrier (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, nom_cours VARCHAR(255) NOT NULL, date_start DATETIME NOT NULL, date_end DATETIME NOT NULL)');
         $this->addSql('CREATE TABLE calendrier_intervenant (calendrier_id INTEGER NOT NULL, intervenant_id INTEGER NOT NULL, PRIMARY KEY(calendrier_id, intervenant_id))');
         $this->addSql('CREATE INDEX IDX_90A8BACBFF52FC51 ON calendrier_intervenant (calendrier_id)');
         $this->addSql('CREATE INDEX IDX_90A8BACBAB9A1716 ON calendrier_intervenant (intervenant_id)');
