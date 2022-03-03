@@ -2,10 +2,12 @@
 
 namespace App\Controller;
 
+use DateTime;
 use App\Entity\Calendrier;
 use App\Entity\Matiere;
 use App\Form\CalendrierFormType;
 use App\Form\MatiereFormType;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -84,6 +86,45 @@ class SecretaireController extends AbstractController
         $date = $this->getDoctrine()->getRepository(Calendrier::class)->findAll();
 
         return $this->render('calendrier/calendrier.html.twig', ['Calendriers'=>$date,]);
+    }
+
+    /**
+     * @Route ("/calendrier/{id}/edit", name="calendar_event_edit", methods={"PUT"})
+     */
+
+    function editCalendrier(ManagerRegistry $doctrine, ?Calendrier $calendrier, Request $request){
+        $data = json_decode($request->getContent());
+
+        if
+        (
+            isset($data->title) && !empty($data->title) &&
+            isset($data->start) && !empty($data->start) &&
+            isset($data->end) && !empty($data->end)
+        ){
+            //Complet
+            $status_code = 200;
+
+            if(!$calendrier){
+                $calendrier = new Calendrier();
+
+                $status_code = 201;
+            }
+
+            $calendrier->setNomCours($data->title);
+            $calendrier->setDateStart(new DateTime($data->start));
+            $calendrier->setDateEnd(new DateTime($data->end));
+
+            $em = $doctrine->getManager();
+            $em->persist($calendrier);
+            $em->flush();
+
+            return new Response("OK", $status_code);
+
+        }else{
+            return new Response("NOT FOUND", 404);
+        }
+
+
     }
 
     /**

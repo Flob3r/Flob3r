@@ -47,6 +47,7 @@
                         center: 'title',
                         end: 'dayGridMonth,timeGridWeek'
                     },
+                    editable: true,
                     events: [
                         {% for Calendrier in Calendriers %}
                         {
@@ -58,6 +59,23 @@
                         {% endfor %}
                     ]
                 })
+
+                calendar.on('eventChange', (e) => {
+                    console.log(e)
+                    let url = `/calendrier/${e.event.id}/edit`
+
+                    let data = {
+                        "title": e.event.title,
+                        "start": e.event.start,
+                        "end": e.event.end
+                    }
+
+                    let xhr = new XMLHttpRequest
+
+                    xhr.open("PUT", url);
+                    xhr.send(JSON.stringify(data))
+                })
+
                 calendar.render()
             }
         </script>
